@@ -18,5 +18,11 @@ export default class Contact {
         return this._email;
     }
 
-    
+    get age() {
+        return this._age;
+    }
+
+    set age(age) {
+        this._age = age; 
+    }
 }
