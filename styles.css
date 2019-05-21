@@ -1,0 +1,17 @@
+#jumbotron {
+    background-color: rgb(99, 45, 14);
+    height: 0;
+    border-radius: 0;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 99;
+}
+
+#agendaLogo {
+    width: 30%;
+    position: fixed;
+    top: 30px;
+    left: 0;
+}
