@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link href="styles.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -12,11 +13,53 @@
     </script>
     <title>Agenda</title>
 </head>
-<body>
+<body id="body">
     <div id="jumbotron" class="jumbotron">
             <img src="AgendaLogo.png" class="rounded float-left" id="agendaLogo">
     </div>
-
+    <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 mb-5">
+                    <div class="form-group">
+                        <div class="row"></div>
+                        <form id="form" class="col-12 needs validation" novalidate>
+                            <div class="form-group">
+                                <label for="name">Contact name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Patient's name" required />
+                                <div class="valid-feedback">Correct</div>
+                                <div class="invalid-feedback">The name is needed</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Birthday</label>
+                                <input type="date" class="form-control" id="date" placeholder="Birth date" required />
+                                <div class="valid-feedback">Correct</div>
+                                <div class="invalid-feedback">The birth date is needed</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="user@domain.com" required />
+                                <div class="valid-feedback">Correct</div>
+                                <div class="invalid-feedback">The email is needed</div>
+                            </div>
+                            <button id="btnAdd" type="button" class="btn float-right">Add</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <table id="agenda" class="table border">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Birthday</th>
+                                <th>Email</th>
+                                <th>Age</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     <script src="agenda.js" type="module"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

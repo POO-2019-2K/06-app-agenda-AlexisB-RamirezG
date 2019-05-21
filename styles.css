@@ -15,3 +15,22 @@
     top: 30px;
     left: 0;
 }
+
+#body {
+    padding-top: 150px;
+}
+
+#btnAdd {
+    color: #e2b269;
+    background-color: rgb(99, 45, 14);
+    font-family: "Montserrat";
+}
+
+th {
+    color: rgb(99, 45, 14);
+}
+
+label, th, td, button, ::placeholder, input[type="date"] {
+    font-family: "Montserrat";
+}
+
