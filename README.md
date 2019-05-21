@@ -1,5 +1,5 @@
 
-# Ejercicio 6 La Agenda [![Codacy Badge](https://api.codacy.com/project/badge/Grade/054bf2c504e9411cb3bdf0c85e233ea7)](https://www.codacy.com/app/AlexisB-RamirezG/06-app-agenda-AlexisB-RamirezG?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=POO-2019-2K/06-app-agenda-AlexisB-RamirezG&amp;utm_campaign=Badge_Grade)
+# Ejercicio 6 La Agenda [![Codacy Badge](https://api.codacy.com/project/badge/Grade/054bf2c504e9411cb3bdf0c85e233ea7)](https://www.codacy.com/app/AlexisB-RamirezG/06-app-agenda-AlexisB-RamirezG?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=POO-2019-2K/06-app-agenda-AlexisB-RamirezG&amp;utm_campaign=Badge_Grade) [![codebeat badge](https://codebeat.co/badges/4ab7837e-413c-4f4e-9a62-96fff8c43f42)](https://codebeat.co/projects/github-com-poo-2019-2k-06-app-agenda-alexisb-ramirezg-master)
 
 
 ## Tiempo para realizar la actividad
