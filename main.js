@@ -18,9 +18,9 @@ class Main {
                 let email = document.querySelector("#email").value;
 
                 let objContact = {
-                    name: name,
+                    name,
                     birthday: bDate,
-                    email: email
+                    email
                 }
 
                 let contact = new Contact(objContact);
