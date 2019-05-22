@@ -25,4 +25,15 @@ export default class Contact {
     set age(age) {
         this._age = age; 
     }
+
+    getBirthDateString() {
+        let date =
+            this._birthday.getDate() +
+            "/" +
+            this._birthday.getMonth() +
+            "/" +
+            this._birthday.getFullYear();
+
+        return date;
+    }
 }

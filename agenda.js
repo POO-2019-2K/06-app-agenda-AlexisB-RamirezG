@@ -6,6 +6,8 @@ export default class Agenda {
         this._list = new List();
     }
 
-    addContact()
+    addContact(contact, stringBD) {
+       
+    }
 }
 

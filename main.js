@@ -7,7 +7,6 @@ class Main {
         let list = new List();
         let agenda = new Agenda();
 
-        lista.mostrar(agenda.getContactos())
         document.querySelector("#btnAdd").addEventListener("click", () => {
             let form = document.querySelector("#form");
 
@@ -23,9 +22,11 @@ class Main {
                     birthday: bDate,
                     email: email
                 }
-                
+
                 let contact = new Contact(objContact);
-                agenda.addContact(contact);
+                let stringBDate = contact.getBirthDateString();
+
+                agenda.addContact(contact, stringBDate);
             }
 
             form.classList.add("was-validated");
@@ -33,4 +34,4 @@ class Main {
     }
 }
 
-new Main();
+let main = new Main();
