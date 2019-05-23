@@ -16,13 +16,14 @@ export default class Agenda {
         };
 
         this._contacts.push(objContact);
+        console.log(this._contacts);
         localStorage.setItem("contacts", JSON.stringify(this._contacts));
 
         Swal.fire({
             type: "success",
             title: "Contact added!",
         });
-        
+
         return objContact;
     }
 

@@ -2,6 +2,7 @@ export default class List {
     constructor(tableAgenda) {
         this._tableAgenda = tableAgenda;
         this._contacts = [];
+        this._numberContacts = 0;
     }
 
     addToTable(contact) {
@@ -25,5 +26,15 @@ export default class List {
         cellAge.appendChild(ageText);
 
         this._contacts.push(contact);
+
+        this._numberContacts++;
+
+        console.log(this._contacts);
+    }
+
+    clearTable() {
+        for(let i = 0; i < this._numberContacts; i++) {
+            this._tableAgenda.deleteRow(-1);
+        }
     }
 }

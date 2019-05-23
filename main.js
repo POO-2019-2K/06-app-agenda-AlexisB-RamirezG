@@ -18,6 +18,7 @@ class Main {
         });
 
 
+
         document.querySelector("#btnAdd").addEventListener("click", () => {
             let form = document.querySelector("#form");
 
@@ -39,7 +40,7 @@ class Main {
                 let contactAge = contact.getAge();
 
                 let contactToTable = agenda.addContact(contact, stringContactBD, contactAge);
-                list.addToTable(contactToTable);
+                list.addToTable(contactToTable, agenda);
             }
 
             form.classList.add("was-validated");
