@@ -14,10 +14,11 @@ export default class List {
     _addToTable(contact) {
         let row = this._tableAgenda.insertRow(-1);
 
-        let cellName = row.insertCell(0);
-        let cellBirthday = row.insertCell(1);
-        let cellEmail = row.insertCell(2);
-        let cellAge = row.insertCell(3);
+        let cellName = row.insertCell(0),
+        cellBirthday = row.insertCell(1),
+        cellEmail = row.insertCell(2),
+        cellAge = row.insertCell(3),
+        cellDelete = row.insertCell(4);
 
         let nameText = document.createTextNode(contact.name);
         cellName.appendChild(nameText);
@@ -31,34 +32,39 @@ export default class List {
         let ageText = document.createTextNode(contact.age);
         cellAge.appendChild(ageText);
 
+        let deleteButton = document.createElement("input");
+        deleteButton.type = "button";
+        deleteButton.value = "Delete";
+        deleteButton.className = "btn";
+        deleteButton.id = "btnDelete";
+        deleteButton.addEventListener("click", () => {
+        });
+        cellDelete.appendChild(deleteButton);
         this._numberContacts++;
     }
 
     _clearTable() {
-            for (let i = 0; i < this._numberContacts; i++) {
-                this._tableAgenda.deleteRow(-1);
-            }
-            this._contacts = [];
-            this._numberContacts = 0;
+        for (let i = 0; i < this._numberContacts; i++) {
+            this._tableAgenda.deleteRow(-1);
+        }
+        this._contacts = [];
+        this._numberContacts = 0;
     }
 
     sortByName(contacts) {
-        console.log(this._numberContacts);
         this._clearTable();
-        console.log(this._numberContacts);
         this._sorts++;
         this._contacts = contacts;
-        console.log(this._numberContacts);
         this._contacts.sort(function (a, b) {
-            var nameA = a.name.toLowerCase(),
-                nameB = b.name.toLowerCase()
+            let nameA = a.name.toLowerCase(),
+                nameB = b.name.toLowerCase();
             if (nameA < nameB) {
-                return -1
+                return -1;
             }
             if (nameA > nameB) {
-                return 1
+                return 1;
             }
-            return 0
+            return 0;
         });
         this._contacts.forEach((e, index) => {
             this._addToTable(e);
