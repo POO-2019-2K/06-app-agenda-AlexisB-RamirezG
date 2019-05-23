@@ -46,12 +46,12 @@ class Main {
 
         document.querySelector("#btnName").addEventListener("click", () => {
             let nameContacts = agenda.sortByName();
-            list.printByName(nameContacts);
+            list.printSorted(nameContacts);
         });
 
         document.querySelector("#btnAge").addEventListener("click", () => {
             let ageContacts = agenda.sortByAge();
-            list.printByAge(ageContacts);
+            list.printSorted(ageContacts);
         });
     }
 }

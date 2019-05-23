@@ -51,7 +51,7 @@ export default class List {
         this._numberContacts = 0;
     }
 
-    printByName(contacts) {
+    printSorted(contacts) {
         this._clearTable();
         this._sorts++;
         this._contacts = contacts;
@@ -59,13 +59,4 @@ export default class List {
             this._addToTable(e);
         });
     } 
-
-    printByAge(contacts) {
-        this._clearTable();
-        this._sorts++;
-        this._contacts = contacts;
-        this._contacts.forEach((e, index) => {
-            this._addToTable(e);
-        });
-    }
 }
