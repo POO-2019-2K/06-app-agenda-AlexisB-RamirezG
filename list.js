@@ -25,8 +25,8 @@ export default class List {
         cellAge.appendChild(ageText);
 
         Swal.fire({
-            type: 'success',
-            title: 'Contact added!',
+            type: "success",
+            title: "Contact added!",
         });
     }
 }
