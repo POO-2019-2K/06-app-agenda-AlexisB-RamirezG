@@ -28,8 +28,6 @@ export default class List {
         this._contacts.push(contact);
 
         this._numberContacts++;
-
-        console.log(this._contacts);
     }
 
     clearTable() {
@@ -37,4 +35,6 @@ export default class List {
             this._tableAgenda.deleteRow(-1);
         }
     }
+
+
 }

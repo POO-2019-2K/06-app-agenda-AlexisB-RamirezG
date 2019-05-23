@@ -17,8 +17,6 @@ class Main {
             list.addToTable(e);
         });
 
-
-
         document.querySelector("#btnAdd").addEventListener("click", () => {
             let form = document.querySelector("#form");
 

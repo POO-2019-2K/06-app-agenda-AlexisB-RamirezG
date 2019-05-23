@@ -16,7 +16,7 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3 mb-5">
+            <div class="col-md-3 border pt-2 ml-2 pr-0 pl-0 pb-3">
                 <div class="form-group">
                     <div class="row"></div>
                     <form id="form" class="col-12 needs validation" novalidate>
@@ -43,7 +43,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-md-9">
+            <div class="col-md">
                 <table id="agenda" class="table border">
                     <thead>
                         <tr>
@@ -55,6 +55,13 @@
                     </thead>
                     <tbody></tbody>
                 </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 mt-3 border pt-2 ml-2 pr-0 pl-0 pb-3">
+                <label for="name" class="pl-3 pt-1">Sort by:</label>
+                <br><button id="btnName" type="button" class="btn float-left ml-3 mr-2">Name</button>
+                <button id="btnAge" type="button" class="btn">Age</button>
             </div>
         </div>
     </div>

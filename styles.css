@@ -20,10 +20,14 @@
     padding-top: 150px;
 }
 
-#btnAdd {
+#btnAdd, #btnAge, #btnName {
     color: #e2b269;
     background-color: rgb(99, 45, 14);
     font-family: "Montserrat";
+}
+
+#btnAge, #btnName {
+    width: 45%;
 }
 
 th {
