@@ -46,7 +46,6 @@ class Main {
 
         document.querySelector("#btnName").addEventListener("click", () => {
             let nameContacts = agenda.sortByName();
-            console.log(nameContacts);
             list.printByName(nameContacts);
         });
 

@@ -16,7 +16,6 @@ export default class Agenda {
         };
 
         this._contacts.push(objContact);
-        console.log(this._contacts);
         localStorage.setItem("contacts", JSON.stringify(this._contacts));
 
         Swal.fire({
@@ -30,7 +29,6 @@ export default class Agenda {
     getContacts() {
         let contacts = JSON.parse(localStorage.getItem("contacts"));
         this._contacts = contacts;
-        console.log(this._contacts);
         return contacts;
     }
 
@@ -54,7 +52,7 @@ export default class Agenda {
     sortByAge() {
         this.getContacts();
         this._contacts.sort(function (a, b) {
-            return b.age - a.age
+            return a.age - b.age;
         });
 
         return this._contacts;
