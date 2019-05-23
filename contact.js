@@ -4,7 +4,7 @@ export default class Contact {
         this._birthday = contact.birthday;
         this._email = contact.email;
         this._age = 0;
-    };
+    }
 
     get name() {
         return this._name;

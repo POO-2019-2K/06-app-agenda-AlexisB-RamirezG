@@ -22,7 +22,7 @@ class Main {
                     name,
                     birthday: bDate,
                     email
-                }
+                };
 
                 let contact = new Contact(objContact);
                 let stringContactBD = contact.getBirthDateString();
