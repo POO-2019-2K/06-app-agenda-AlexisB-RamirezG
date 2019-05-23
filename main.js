@@ -14,7 +14,7 @@ class Main {
         }
 
         lsContacts.forEach((e, index) => {
-            list.addToTable(e);
+            list.addToList(e);
         });
 
         document.querySelector("#btnAdd").addEventListener("click", () => {
@@ -38,10 +38,20 @@ class Main {
                 let contactAge = contact.getAge();
 
                 let contactToTable = agenda.addContact(contact, stringContactBD, contactAge);
-                list.addToTable(contactToTable, agenda);
+                list.addToList(contactToTable);
             }
 
             form.classList.add("was-validated");
+        });
+
+        document.querySelector("#btnName").addEventListener("click", () => {
+            let listContacts = agenda.getContacts();
+            list.sortByName(listContacts);
+        });
+
+        document.querySelector("#btnAge").addEventListener("click", () => {
+            let listContacts = agenda.getContacts();
+            list.sortByAge(listContacts);
         });
     }
 }
