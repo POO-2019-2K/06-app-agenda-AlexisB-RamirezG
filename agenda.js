@@ -13,7 +13,7 @@ export default class Agenda {
             email: contact.email,
             stringBD,
             age
-        }
+        };
 
         this._contacts.push(objContact);
         //localStorage.setItem("contacts", JSON.stringify(this._contacts));
