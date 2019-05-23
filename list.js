@@ -18,18 +18,15 @@ export default class List {
         cellBirthday = row.insertCell(1),
         cellEmail = row.insertCell(2),
         cellAge = row.insertCell(3),
-        cellDelete = row.insertCell(4);
-
-        let nameText = document.createTextNode(contact.name);
+        cellDelete = row.insertCell(4),
+        nameText = document.createTextNode(contact.name),
+        birthdayText = document.createTextNode(contact.stringBD),
+        emailText = document.createTextNode(contact.email),
+        ageText = document.createTextNode(contact.age);
+        
         cellName.appendChild(nameText);
-
-        let birthdayText = document.createTextNode(contact.stringBD);
         cellBirthday.appendChild(birthdayText);
-
-        let emailText = document.createTextNode(contact.email);
         cellEmail.appendChild(emailText);
-
-        let ageText = document.createTextNode(contact.age);
         cellAge.appendChild(ageText);
 
         let deleteButton = document.createElement("input");
