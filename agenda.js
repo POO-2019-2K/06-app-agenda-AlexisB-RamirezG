@@ -16,9 +16,20 @@ export default class Agenda {
         };
 
         this._contacts.push(objContact);
-        //localStorage.setItem("contacts", JSON.stringify(this._contacts));
+        localStorage.setItem("contacts", JSON.stringify(this._contacts));
+
+        Swal.fire({
+            type: "success",
+            title: "Contact added!",
+        });
+        
         return objContact;
     }
 
-
+    getContacts() {
+        let contacts = JSON.parse(localStorage.getItem("contacts"));
+        this._contacts = contacts;
+        console.log(this._contacts);
+        return contacts;
+    }
 }

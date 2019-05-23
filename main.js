@@ -8,6 +8,16 @@ class Main {
         let list = new List(tableAgenda);
         let agenda = new Agenda();
 
+        let lsContacts = agenda.getContacts();
+        if (lsContacts === null) {
+            return;
+        }
+
+        lsContacts.forEach((e, index) => {
+            list.addToTable(e);
+        });
+
+
         document.querySelector("#btnAdd").addEventListener("click", () => {
             let form = document.querySelector("#form");
 
@@ -27,7 +37,7 @@ class Main {
                 let contact = new Contact(objContact);
                 let stringContactBD = contact.getBirthDateString();
                 let contactAge = contact.getAge();
-                
+
                 let contactToTable = agenda.addContact(contact, stringContactBD, contactAge);
                 list.addToTable(contactToTable);
             }

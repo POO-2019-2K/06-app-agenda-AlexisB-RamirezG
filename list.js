@@ -15,7 +15,7 @@ export default class List {
         let nameText = document.createTextNode(contact.name);
         cellName.appendChild(nameText);
 
-        let birthdayText = document.createTextNode(contact.birthday);
+        let birthdayText = document.createTextNode(contact.stringBD);
         cellBirthday.appendChild(birthdayText);
 
         let emailText = document.createTextNode(contact.email);
@@ -24,9 +24,6 @@ export default class List {
         let ageText = document.createTextNode(contact.age);
         cellAge.appendChild(ageText);
 
-        Swal.fire({
-            type: "success",
-            title: "Contact added!",
-        });
+        this._contacts.push(contact);
     }
 }
