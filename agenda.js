@@ -33,4 +33,30 @@ export default class Agenda {
         console.log(this._contacts);
         return contacts;
     }
+
+    sortByName() {
+        this.getContacts();
+        this._contacts.sort(function (a, b) {
+            let nameA = a.name.toLowerCase(),
+                nameB = b.name.toLowerCase();
+            if (nameA < nameB) {
+                return -1;
+            }
+            if (nameA > nameB) {
+                return 1;
+            }
+            return 0;
+        });
+
+        return this._contacts;
+    }
+
+    sortByAge() {
+        this.getContacts();
+        this._contacts.sort(function (a, b) {
+            return b.age - a.age
+        });
+
+        return this._contacts;
+    }
 }

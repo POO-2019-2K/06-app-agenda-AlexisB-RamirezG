@@ -51,33 +51,19 @@ export default class List {
         this._numberContacts = 0;
     }
 
-    sortByName(contacts) {
+    printByName(contacts) {
         this._clearTable();
         this._sorts++;
         this._contacts = contacts;
-        this._contacts.sort(function (a, b) {
-            let nameA = a.name.toLowerCase(),
-                nameB = b.name.toLowerCase();
-            if (nameA < nameB) {
-                return -1;
-            }
-            if (nameA > nameB) {
-                return 1;
-            }
-            return 0;
-        });
         this._contacts.forEach((e, index) => {
             this._addToTable(e);
         });
-    }
+    } 
 
-    sortByAge(contacts) {
+    printByAge(contacts) {
         this._clearTable();
         this._sorts++;
         this._contacts = contacts;
-        this._contacts.sort(function (a, b) {
-            return b.age - a.age
-        });
         this._contacts.forEach((e, index) => {
             this._addToTable(e);
         });

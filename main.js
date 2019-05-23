@@ -45,13 +45,14 @@ class Main {
         });
 
         document.querySelector("#btnName").addEventListener("click", () => {
-            let listContacts = agenda.getContacts();
-            list.sortByName(listContacts);
+            let nameContacts = agenda.sortByName();
+            console.log(nameContacts);
+            list.printByName(nameContacts);
         });
 
         document.querySelector("#btnAge").addEventListener("click", () => {
-            let listContacts = agenda.getContacts();
-            list.sortByAge(listContacts);
+            let ageContacts = agenda.sortByAge();
+            list.printByAge(ageContacts);
         });
     }
 }
