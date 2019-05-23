@@ -6,8 +6,19 @@ export default class Agenda {
         this._list = new List();
     }
 
-    addContact(contact, stringBD) {
-       
-    }
-}
+    addContact(contact, stringBD, age) {        
+        let objContact = {
+            name: contact.name,
+            bDate: contact._birthday,
+            email: contact.email,
+            stringBD,
+            age
+        }
 
+        this._contacts.push(objContact);
+        //localStorage.setItem("contacts", JSON.stringify(this._contacts));
+        return objContact;
+    }
+
+
+}

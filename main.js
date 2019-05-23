@@ -4,7 +4,8 @@ import Agenda from "./agenda.js";
 
 class Main {
     constructor() {
-        let list = new List();
+        let tableAgenda = document.querySelector("#agenda");
+        let list = new List(tableAgenda);
         let agenda = new Agenda();
 
         document.querySelector("#btnAdd").addEventListener("click", () => {
@@ -24,9 +25,11 @@ class Main {
                 }
 
                 let contact = new Contact(objContact);
-                let stringBDate = contact.getBirthDateString();
-
-                agenda.addContact(contact, stringBDate);
+                let stringContactBD = contact.getBirthDateString();
+                let contactAge = contact.getAge();
+                
+                let contactToTable = agenda.addContact(contact, stringContactBD, contactAge);
+                list.addToTable(contactToTable);
             }
 
             form.classList.add("was-validated");

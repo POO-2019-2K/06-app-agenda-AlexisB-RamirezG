@@ -36,4 +36,13 @@ export default class Contact {
 
         return date;
     }
+
+    getAge() {
+    let Day = 24 * 60 * 60 * 1000;
+    let oneYear = Day * 365;
+    let differenceMs = new Date() - this._birthday;
+    let age = Math.trunc(differenceMs / oneYear);
+
+    return age;
+    }
 }
