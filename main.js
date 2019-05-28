@@ -9,7 +9,7 @@ class Main {
         let agenda = new Agenda();
 
         agenda.getContacts();
-        
+
         list.agenda = agenda; 
 
         list.printContacts();
@@ -20,10 +20,11 @@ class Main {
             if (form.checkValidity() === true) {
                 let name = document.querySelector("#name").value,
                 birthday = document.querySelector("#date").value,
-                bDate = new Date(birthday[0], birthday[1], birthday[2]),
                 email = document.querySelector("#email").value;
 
                 birthday = birthday.split("-");
+                
+                let bDate = new Date(birthday[0], birthday[1], birthday[2]);
 
                 let objContact = {
                     name,

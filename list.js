@@ -18,15 +18,15 @@ export default class List {
         let row = this._tableAgenda.insertRow(-1);
 
         let cellName = row.insertCell(0),
-        cellBirthday = row.insertCell(1),
-        cellEmail = row.insertCell(2),
-        cellAge = row.insertCell(3),
-        cellDelete = row.insertCell(4),
-        nameText = document.createTextNode(contact.name),
-        birthdayText = document.createTextNode(contact.stringBD),
-        emailText = document.createTextNode(contact.email),
-        ageText = document.createTextNode(contact.age);
-        
+            cellBirthday = row.insertCell(1),
+            cellEmail = row.insertCell(2),
+            cellAge = row.insertCell(3),
+            cellDelete = row.insertCell(4),
+            nameText = document.createTextNode(contact.name),
+            birthdayText = document.createTextNode(contact.stringBD),
+            emailText = document.createTextNode(contact.email),
+            ageText = document.createTextNode(contact.age);
+
         cellName.appendChild(nameText);
         cellBirthday.appendChild(birthdayText);
         cellEmail.appendChild(emailText);
@@ -38,9 +38,21 @@ export default class List {
         deleteButton.className = "btn";
         deleteButton.id = "btnDelete";
         deleteButton.addEventListener("click", () => {
-            this._agenda.deleteContact(contact);
-            this._clearTable();
-            this.printContacts();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    this._agenda.deleteContact(contact);
+                    this._clearTable();
+                    this.printContacts();
+                }
+            })
         });
         cellDelete.appendChild(deleteButton);
         this._numberContacts++;
@@ -75,5 +87,5 @@ export default class List {
             this._addToTable(e, index);
         });
         //this._order = "normal";
-    } 
+    }
 }
