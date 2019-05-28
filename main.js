@@ -40,7 +40,7 @@ class Main {
                         title: "Can't add contact!",
                         text: "This contact has been already registered.",
                     });
-                    return
+                    return;
                 }
 
                 let contact = new Contact(objContact),

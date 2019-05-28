@@ -49,13 +49,13 @@ export default class List {
         deleteButton.id = "btnDelete";
         deleteButton.addEventListener("click", () => {
             Swal.fire({
-                title: 'Are you sure?',
+                title: "Are you sure?",
                 text: "You won't be able to revert this!",
-                type: 'warning',
+                type: "warning",
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
             }).then((result) => {
                 if (result.value) {
                     this._agenda.deleteContact(contact);
@@ -65,7 +65,7 @@ export default class List {
                         title: "Contact deleted!",
                     });
                 }
-            })
+            });
         });
         cellDelete.appendChild(deleteButton);
         this._numberContacts++;
