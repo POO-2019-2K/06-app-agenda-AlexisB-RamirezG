@@ -25,10 +25,36 @@ export default class List {
         this._saveOrder();
     }
 
-    _addToTable(contact, index) {
-        let row = this._tableAgenda.insertRow(-1);
+    _deleteButtonEvent(deleteButton, contact) {
+        deleteButton.type = "button";
+        deleteButton.value = "Delete";
+        deleteButton.className = "btn";
+        deleteButton.id = "btnDelete";
+        deleteButton.addEventListener("click", () => {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.value) {
+                    this._agenda.deleteContact(contact);
+                    this.printContacts();
+                    Swal.fire({
+                        type: "success",
+                        title: "Contact deleted!",
+                    });
+                }
+            });
+        });
+    }
 
-        let cellName = row.insertCell(0),
+    _addToTable(contact, index) {
+        let row = this._tableAgenda.insertRow(-1),
+            cellName = row.insertCell(0),
             cellBirthday = row.insertCell(1),
             cellEmail = row.insertCell(2),
             cellAge = row.insertCell(3),
@@ -36,13 +62,21 @@ export default class List {
             nameText = document.createTextNode(contact.name),
             birthdayText = document.createTextNode(contact.stringBD),
             emailText = document.createTextNode(contact.email),
-            ageText = document.createTextNode(contact.age);
+            ageText = document.createTextNode(contact.age),
+            deleteButton = document.createElement("input");
 
+        this._deleteButtonEvent(deleteButton, contact);
+        
         cellName.appendChild(nameText);
         cellBirthday.appendChild(birthdayText);
         cellEmail.appendChild(emailText);
         cellAge.appendChild(ageText);
+        cellDelete.appendChild(deleteButton);
+        
+        this._numberContacts++;
+    }
 
+    _createDeleteButton() {
         let deleteButton = document.createElement("input");
         deleteButton.type = "button";
         deleteButton.value = "Delete";
@@ -69,8 +103,7 @@ export default class List {
             });
         });
         cellDelete.appendChild(deleteButton);
-        this._numberContacts++;
-    }
+    } 
 
     _clearTable() {
         for (let i = 0; i < this._numberContacts; i++) {
