@@ -4,6 +4,7 @@ export default class List {
         this._agenda = null;
         this._numberContacts = 0;
         this._order = "normal";
+        // this._order keeps the order value even after refresh
     }
 
     set agenda(agenda) {
@@ -115,15 +116,18 @@ export default class List {
         }
     }
 
+    // Print the table as it was before refresh
     printOrdered() {
         this.getOrder();
         this.printContacts();
     }
 
+    // Save the order atributte in LS
     _saveOrder() {
         localStorage.setItem("order", JSON.stringify(this._order));
     }
 
+    // Get the order atributte value from LS
     getOrder() {
         this._order = JSON.parse(localStorage.getItem("order"));
     }
