@@ -1,17 +1,20 @@
 export default class List {
     constructor(tableAgenda) {
         this._tableAgenda = tableAgenda;
-        this._contacts = [];
+        this._agenda = null;
         this._numberContacts = 0;
-        this._sorts = 0;
+        //this._order = "normal";
+    }
+
+    set agenda(agenda) {
+        this._agenda = agenda;
     }
 
     addToList(contact) {
-        this._contacts.push(contact);
         this._addToTable(contact);
     }
 
-    _addToTable(contact) {
+    _addToTable(contact, index) {
         let row = this._tableAgenda.insertRow(-1);
 
         let cellName = row.insertCell(0),
@@ -35,6 +38,9 @@ export default class List {
         deleteButton.className = "btn";
         deleteButton.id = "btnDelete";
         deleteButton.addEventListener("click", () => {
+            this._agenda.deleteContact(contact);
+            this._clearTable();
+            this.printContacts();
         });
         cellDelete.appendChild(deleteButton);
         this._numberContacts++;
@@ -44,16 +50,30 @@ export default class List {
         for (let i = 0; i < this._numberContacts; i++) {
             this._tableAgenda.deleteRow(-1);
         }
-        this._contacts = [];
         this._numberContacts = 0;
     }
 
-    printSorted(contacts) {
+    printOrderByName() {
         this._clearTable();
-        this._sorts++;
-        this._contacts = contacts;
-        this._contacts.forEach((e, index) => {
-            this._addToTable(e);
+        this._agenda.sortByName().forEach((e, index) => {
+            this._addToTable(e, index);
         });
+        //this._order = "name";
+    }
+
+    printOrderByAge() {
+        this._clearTable();
+        this._agenda.sortByAge().forEach((e, index) => {
+            this._addToTable(e, index);
+        });
+        //this._order = "age";
+    }
+
+    printContacts() {
+        this._clearTable();
+        this._agenda.contacts.forEach((e, index) => {
+            this._addToTable(e, index);
+        });
+        //this._order = "normal";
     } 
 }

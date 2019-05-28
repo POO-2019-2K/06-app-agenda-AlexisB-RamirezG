@@ -8,14 +8,11 @@ class Main {
         let list = new List(tableAgenda);
         let agenda = new Agenda();
 
-        let lsContacts = agenda.getContacts();
-        if (lsContacts === null) {
-            return;
-        }
+        agenda.getContacts();
+        
+        list.agenda = agenda; 
 
-        lsContacts.forEach((e, index) => {
-            list.addToList(e);
-        });
+        list.printContacts();
 
         document.querySelector("#btnAdd").addEventListener("click", () => {
             let form = document.querySelector("#form");
@@ -46,13 +43,11 @@ class Main {
         });
 
         document.querySelector("#btnName").addEventListener("click", () => {
-            let nameContacts = agenda.sortByName();
-            list.printSorted(nameContacts);
+            list.printOrderByName();
         });
 
         document.querySelector("#btnAge").addEventListener("click", () => {
-            let ageContacts = agenda.sortByAge();
-            list.printSorted(ageContacts);
+            list.printOrderByAge();
         });
     }
 }

@@ -3,10 +3,13 @@ import List from "./list.js";
 export default class Agenda {
     constructor() {
         this._contacts = [];
-        this._list = new List();
     }
 
-    addContact(contact, stringBD, age) {        
+    get contacts() {
+        return this._contacts;
+    }
+
+    addContact(contact, stringBD, age) {
         let objContact = {
             name: contact.name,
             bDate: contact._birthday,
@@ -29,6 +32,7 @@ export default class Agenda {
     getContacts() {
         let contacts = JSON.parse(localStorage.getItem("contacts"));
         this._contacts = contacts;
+        console.log(this._contacts);
         return contacts;
     }
 
@@ -56,5 +60,23 @@ export default class Agenda {
         });
 
         return this._contacts;
+    }
+
+    findContact(contact) {
+        let foundAt = -1;
+        this._contacts.forEach((e, index) => {
+            if (e.name === contact.name) {
+                foundAt = index;
+                return;
+            }
+        });
+
+        return foundAt;
+    }
+
+    deleteContact(contact) {
+        let index = this.findContact(contact);
+        this._contacts.splice(index, 1);
+        localStorage.setItem("contacts", JSON.stringify(this._contacts));
     }
 }
