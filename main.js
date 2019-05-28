@@ -10,20 +10,20 @@ class Main {
 
         agenda.getContacts();
 
-        list.agenda = agenda; 
+        list.agenda = agenda;
 
-        list.printContacts();
+        list.printOrdered();
 
         document.querySelector("#btnAdd").addEventListener("click", () => {
             let form = document.querySelector("#form");
 
             if (form.checkValidity() === true) {
                 let name = document.querySelector("#name").value,
-                birthday = document.querySelector("#date").value,
-                email = document.querySelector("#email").value;
+                    birthday = document.querySelector("#date").value,
+                    email = document.querySelector("#email").value;
 
                 birthday = birthday.split("-");
-                
+
                 let bDate = new Date(birthday[0], birthday[1], birthday[2]);
 
                 let objContact = {
@@ -32,12 +32,23 @@ class Main {
                     email
                 };
 
+                let found = agenda.findContact(objContact);
+
+                if (found >= 0) {
+                    Swal.fire({
+                        type: "error",
+                        title: "Can't add contact!",
+                        text: "This contact has been already registered.",
+                    });
+                    return
+                }
+
                 let contact = new Contact(objContact),
-                stringContactBD = contact.getBirthDateString(),
-                contactAge = contact.getAge();
+                    stringContactBD = contact.getBirthDateString(),
+                    contactAge = contact.getAge();
 
                 let contactToTable = agenda.addContact(contact, stringContactBD, contactAge);
-                list.addToList(contactToTable);
+                list.contactAdded(contactToTable);
             }
 
             form.classList.add("was-validated");

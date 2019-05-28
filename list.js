@@ -3,7 +3,7 @@ export default class List {
         this._tableAgenda = tableAgenda;
         this._agenda = null;
         this._numberContacts = 0;
-        //this._order = "normal";
+        this._order = "normal";
     }
 
     set agenda(agenda) {
@@ -12,6 +12,15 @@ export default class List {
 
     addToList(contact) {
         this._addToTable(contact);
+    }
+
+    contactAdded(contact) {
+        this._addToTable(contact);
+        Swal.fire({
+            type: "success",
+            title: "Contact added!",
+        });
+        this._order = "normal";
     }
 
     _addToTable(contact, index) {
@@ -49,8 +58,11 @@ export default class List {
             }).then((result) => {
                 if (result.value) {
                     this._agenda.deleteContact(contact);
-                    this._clearTable();
                     this.printContacts();
+                    Swal.fire({
+                        type: "success",
+                        title: "Contact deleted!",
+                    });
                 }
             })
         });
@@ -70,7 +82,8 @@ export default class List {
         this._agenda.sortByName().forEach((e, index) => {
             this._addToTable(e, index);
         });
-        //this._order = "name";
+        this._order = "name";
+        this._saveOrder();
     }
 
     printOrderByAge() {
@@ -78,14 +91,39 @@ export default class List {
         this._agenda.sortByAge().forEach((e, index) => {
             this._addToTable(e, index);
         });
-        //this._order = "age";
+        this._order = "age";
+        this._saveOrder();
     }
 
-    printContacts() {
+    printNormalOrder() {
         this._clearTable();
         this._agenda.contacts.forEach((e, index) => {
             this._addToTable(e, index);
         });
-        //this._order = "normal";
+        this._order = "normal";
+        this._saveOrder();
+    }
+
+    printContacts() {
+        if (this._order === "normal") {
+            this.printNormalOrder();
+        } else if (this._order === "name") {
+            this.printOrderByName();
+        } else if (this._order === "age") {
+            this.printOrderByAge();
+        }
+    }
+
+    printOrdered() {
+        this.getOrder();
+        this.printContacts();
+    }
+
+    _saveOrder() {
+        localStorage.setItem("order", JSON.stringify(this._order));
+    }
+
+    getOrder() {
+        this._order = JSON.parse(localStorage.getItem("order"));
     }
 }

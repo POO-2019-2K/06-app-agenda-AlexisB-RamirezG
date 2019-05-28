@@ -21,11 +21,6 @@ export default class Agenda {
         this._contacts.push(objContact);
         localStorage.setItem("contacts", JSON.stringify(this._contacts));
 
-        Swal.fire({
-            type: "success",
-            title: "Contact added!",
-        });
-
         return objContact;
     }
 
@@ -65,7 +60,7 @@ export default class Agenda {
     findContact(contact) {
         let foundAt = -1;
         this._contacts.forEach((e, index) => {
-            if (e.name === contact.name) {
+            if (e.name === contact.name && e.email === contact.email) {
                 foundAt = index;
                 return;
             }
