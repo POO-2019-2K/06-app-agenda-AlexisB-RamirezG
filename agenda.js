@@ -27,7 +27,6 @@ export default class Agenda {
     getContacts() {
         let contacts = JSON.parse(localStorage.getItem("contacts"));
         this._contacts = contacts;
-        console.log(this._contacts);
         return contacts;
     }
 
