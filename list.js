@@ -21,6 +21,7 @@ export default class List {
             title: "Contact added!",
         });
         this._order = "normal";
+        this._saveOrder();
     }
 
     _addToTable(contact, index) {
