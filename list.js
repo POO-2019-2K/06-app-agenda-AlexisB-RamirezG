@@ -27,15 +27,7 @@ export default class List {
 
     _addToTable(contact, index) {
         let row = this._tableAgenda.insertRow(-1),
-            cellName = row.insertCell(0),
-            cellBirthday = row.insertCell(1),
-            cellEmail = row.insertCell(2),
-            cellAge = row.insertCell(3),
-            cellDelete = row.insertCell(4),
-            nameText = document.createTextNode(contact.name),
-            birthdayText = document.createTextNode(contact.stringBD),
-            emailText = document.createTextNode(contact.email),
-            ageText = document.createTextNode(contact.age),
+            cell = row.insertCell(0),
             deleteButton = document.createElement("input");
 
         deleteButton.type = "button";
@@ -63,11 +55,15 @@ export default class List {
             });
         });
 
-        cellName.appendChild(nameText);
-        cellBirthday.appendChild(birthdayText);
-        cellEmail.appendChild(emailText);
-        cellAge.appendChild(ageText);
-        cellDelete.appendChild(deleteButton);
+        cell.appendChild(document.createTextNode(contact.name));
+        cell = row.insertCell(1);
+        cell.appendChild(document.createTextNode(contact.stringBD));
+        cell = row.insertCell(2);
+        cell.appendChild(document.createTextNode(contact.email));
+        cell = row.insertCell(3);
+        cell.appendChild(document.createTextNode(contact.age));
+        cell = row.insertCell(4);
+        cell.appendChild(deleteButton);
 
         this._numberContacts++;
     }
