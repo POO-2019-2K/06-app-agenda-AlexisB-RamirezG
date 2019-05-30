@@ -25,6 +25,33 @@ export default class List {
         this._saveOrder();
     }
 
+    _deleteButtonEvent(deleteButton, contact) {
+        deleteButton.type = "button";
+        deleteButton.value = "Delete";
+        deleteButton.className = "btn";
+        deleteButton.id = "btnDelete";
+        deleteButton.addEventListener("click", () => {
+            window.Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.value) {
+                    this._agenda.deleteContact(contact);
+                    this.printContacts();
+                    window.Swal.fire({
+                        type: "success",
+                        title: "Contact deleted!",
+                    });
+                }
+            });
+        });
+    }
+
     _addToTable(contact, index) {
         let row = this._tableAgenda.insertRow(-1),
             cellName = row.insertCell(0),
@@ -70,35 +97,6 @@ export default class List {
         cellDelete.appendChild(deleteButton);
 
         this._numberContacts++;
-    }
-
-    _createDeleteButton() {
-        let deleteButton = document.createElement("input");
-        deleteButton.type = "button";
-        deleteButton.value = "Delete";
-        deleteButton.className = "btn";
-        deleteButton.id = "btnDelete";
-        deleteButton.addEventListener("click", () => {
-            window.Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
-                if (result.value) {
-                    this._agenda.deleteContact(contact);
-                    this.printContacts();
-                    window.Swal.fire({
-                        type: "success",
-                        title: "Contact deleted!",
-                    });
-                }
-            });
-        });
-        cellDelete.appendChild(deleteButton);
     }
 
     _clearTable() {
