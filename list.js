@@ -25,15 +25,14 @@ export default class List {
         this._saveOrder();
     }
 
-    _addToTable(contact, index) {
-        let row = this._tableAgenda.insertRow(-1),
-            cell = row.insertCell(0),
-            deleteButton = document.createElement("input");
-
+    _deleteButtonAtributes(deleteButton) {
         deleteButton.type = "button";
         deleteButton.value = "Delete";
         deleteButton.className = "btn";
         deleteButton.id = "btnDelete";
+    }
+
+    _deleteEvent(deleteButton, contact) {
         deleteButton.addEventListener("click", () => {
             window.Swal.fire({
                 title: "Are you sure?",
@@ -54,6 +53,16 @@ export default class List {
                 }
             });
         });
+    }
+
+    _addToTable(contact, index) {
+        let row = this._tableAgenda.insertRow(-1),
+            cell = row.insertCell(0),
+            deleteButton = document.createElement("input");
+
+        this._deleteButtonAtributes(deleteButton);
+
+        this._deleteEvent(deleteButton, contact);
 
         cell.appendChild(document.createTextNode(contact.name));
         cell = row.insertCell(1);
