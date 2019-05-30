@@ -25,14 +25,12 @@ export default class List {
         this._saveOrder();
     }
 
-    _deleteButtonAtributes(deleteButton) {
+    _deleteButtonAtributes(deleteButton, contact) {
         deleteButton.type = "button";
         deleteButton.value = "Delete";
         deleteButton.className = "btn";
         deleteButton.id = "btnDelete";
-    }
 
-    _deleteEvent(deleteButton, contact) {
         deleteButton.addEventListener("click", () => {
             window.Swal.fire({
                 title: "Are you sure?",
@@ -60,9 +58,7 @@ export default class List {
             cell = row.insertCell(0),
             deleteButton = document.createElement("input");
 
-        this._deleteButtonAtributes(deleteButton);
-
-        this._deleteEvent(deleteButton, contact);
+        this._deleteButtonAtributes(deleteButton, contact);
 
         cell.appendChild(document.createTextNode(contact.name));
         cell = row.insertCell(1);
