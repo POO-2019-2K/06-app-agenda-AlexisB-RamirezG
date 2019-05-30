@@ -35,7 +35,7 @@ class Main {
                 let found = agenda.findContact(objContact);
 
                 if (found >= 0) {
-                    Swal.fire({
+                    window.Swal.fire({
                         type: "error",
                         title: "Can't add contact!",
                         text: "This contact has been already registered.",
